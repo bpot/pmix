@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pmix.ui">
+        <uses-permission android:name="android.permission.INTERNET" />
+    <application android:debuggable="true" android:icon="@drawable/icon"  android:theme="@android:style/Theme.Black">
+   
+    	
+        <activity android:name=".MainMenuActivity" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+             <intent-filter>
+                <action android:name="change" />
+            </intent-filter>
+             <receiver android:name=".MainMenuActivity$MyIntentReceiver" />
+        </activity>
+          <activity  android:name=".ArtistsActivity" android:label="@string/artists"/>
+           <activity  android:name=".SettingsActivity" android:label="@string/settings"/>
+          <activity  android:name=".FSActivity" android:label="@string/files"/>
+          <activity  android:name=".AlbumsActivity" android:label="@string/albums"/>
+           <activity  android:name=".SongsActivity" android:label="@string/artists"/>
+    </application>
+</manifest> 
