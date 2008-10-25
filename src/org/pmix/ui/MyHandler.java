@@ -16,7 +16,9 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
@@ -104,8 +106,8 @@ public class MyHandler extends Handler implements ViewSwitcher.ViewFactory {
 
 		i.setBackgroundColor(0x00FF0000);
 		i.setScaleType(ImageView.ScaleType.FIT_CENTER);
-		i.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-
+		i.setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+    
 		return i;
 	}
 
@@ -129,7 +131,7 @@ public class MyHandler extends Handler implements ViewSwitcher.ViewFactory {
 
 			bmImg = BitmapFactory.decodeStream(is);
 			// new BitmapDrawable(bmImg);
-			//mainMenuActivity.getCoverSwitcher().setImageDrawable(new BitmapDrawable(bmImg));
+			mainMenuActivity.getCoverSwitcher().setImageDrawable(new BitmapDrawable(bmImg));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -159,7 +159,7 @@ public class MainMenuActivity extends Activity implements StatusChangeListener, 
 			coverSwitcher = (ImageSwitcher) findViewById(R.id.albumCover);
 
 			handler = new MyHandler(this);
-			//coverSwitcher.setFactory(handler);
+			coverSwitcher.setFactory(handler);
 
 			StringBuffer stringBuffer = new StringBuffer(100);
 
