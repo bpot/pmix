@@ -5,10 +5,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.a0z.mpd.MPD;
+import org.a0z.mpd.MPDPlaylist;
 import org.a0z.mpd.MPDServerException;
 import org.a0z.mpd.Music;
 import org.pmix.settings.Contexte;
 
+import android.util.Log;
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +33,7 @@ public class SongsActivity extends ListActivity {
 			this.setTitle(album);
 			musics = new ArrayList<Music>(Contexte.getInstance().getMpd().find(MPD.MPD_FIND_ALBUM, album));
 
+      items.add("Add All Songs");
 			for (Music music : musics) {
 				items.add(music.getTitle());
 			}
@@ -49,21 +52,27 @@ public class SongsActivity extends ListActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
+
 		Music music = musics.get(position);
 		try {
+      if(position == 0) {
+        Contexte.getInstance().getMpd().getPlaylist().add(musics);
+        return;
+      }
 
 			int songId = -1;
 			// try to find it in the current playlist first
 
-			Collection<Music> founds = Contexte.getInstance().getMpd().find("filename", music.getFullpath());
-			
+			Collection<Music> founds = Contexte.getInstance().getMpd().getPlaylist().find("filename", music.getFullpath()); 
+
 			// not found
 			if (founds.isEmpty()) {
-				Contexte.getInstance().getMpd().getPlaylist().add(music);
+				songId = Contexte.getInstance().getMpd().getPlaylist().addid(music);
 			} else {
 				// found
 				songId = founds.toArray(new Music[founds.size()])[0].getSongId();
-			}
+      }
+      Log.v("PMIX","Added song: " + songId);
 			if (songId > -1) {
 				Contexte.getInstance().getMpd().skipTo(songId);
 			}

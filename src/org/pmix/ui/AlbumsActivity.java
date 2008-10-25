@@ -28,6 +28,7 @@ public class AlbumsActivity extends ListActivity {
 			items.clear();
 
 			if (this.getIntent().getStringExtra("artist") != null) {
+        items.add("Add All Albums");
 				items.addAll(Contexte.getInstance().getMpd().listAlbums((String) this.getIntent().getStringExtra("artist")));
 				this.setTitle((String) this.getIntent().getStringExtra("artist"));
 			} else {

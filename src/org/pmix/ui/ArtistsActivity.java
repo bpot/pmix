@@ -25,7 +25,7 @@ public class ArtistsActivity extends ListActivity {
 
 		items.clear();
 		try {
-
+      items.add("Add All Songs");
 			items.addAll(Contexte.getInstance().getMpd().listArtists());
 
 			ArrayAdapter<String> notes = new ArrayAdapter<String>(this, R.layout.artist_row, items);
