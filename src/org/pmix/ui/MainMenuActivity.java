@@ -317,9 +317,11 @@ public class MainMenuActivity extends Activity implements StatusChangeListener, 
 			return true;
 		case FILES:
 
-			i = new Intent(this, FSActivity.class);
+			//i = new Intent(this, FSActivity.class);
+			i = new Intent(this, MainTabView.class);
 			//startSubActivity(i, FILES);
-			startActivityForResult(i, FILES);
+			//startActivityForResult(i, FILES);
+			startActivity(i);
 			return true;
 		case SETTINGS:
 			i = new Intent(this, SettingsActivity.class);

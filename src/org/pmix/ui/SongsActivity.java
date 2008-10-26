@@ -53,7 +53,7 @@ public class SongsActivity extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
 
-		Music music = musics.get(position);
+		Music music = musics.get(position - 1);
 		try {
       if(position == 0) {
         Contexte.getInstance().getMpd().getPlaylist().add(musics);

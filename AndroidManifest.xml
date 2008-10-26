@@ -15,6 +15,8 @@
             </intent-filter>
              <receiver android:name=".MainMenuActivity$MyIntentReceiver" />
         </activity>
+        <activity android:name=".MainTabView" android:label="tab" />
+        <activity android:name=".PlaylistActivity" android:label="tab" />
           <activity  android:name=".ArtistsActivity" android:label="@string/artists"/>
            <activity  android:name=".SettingsActivity" android:label="@string/settings"/>
           <activity  android:name=".FSActivity" android:label="@string/files"/>
